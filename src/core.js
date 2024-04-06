@@ -1,4 +1,3 @@
-// Exercise: Writing good assertions
 export function getCoupons () {
   return [
     { code: 'SAVE20NOW', discount: 0.2 },
@@ -6,7 +5,6 @@ export function getCoupons () {
   ];
 }
 
-// Lesson: Positive and negative testing
 export function calculateDiscount (price, discountCode) {
   if (typeof price !== 'number' || price <= 0) {
     return 'Invalid price';
