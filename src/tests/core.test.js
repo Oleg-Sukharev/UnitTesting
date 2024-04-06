@@ -1,39 +1,29 @@
 import { it, expect, describe } from 'vitest';
+import { getCoupons } from '../core';
 
-describe('test suite', () => {
-  it('test catese', () => {
-    const result = 'The requested file was not found.';
-    // Loose (too general)
-    expect(result).toBeDefined();
-    // Tight (too specific)
-    expect(result).toBeDefined('The requested file was not found.');
-    // Better assertion
-    // expect(result).toMatch("not found");
-    expect(result).toMatch(/not found/i);
+describe('getCoupons', () => {
+  it('should return an array  of coupons', () => {
+    const coupons = getCoupons();
+    expect(Array.isArray(coupons)).toBe(true);
+    expect(coupons.length).toBeGreaterThan(0);
   });
-});
 
-describe('test suite', () => {
-  it('test catese', () => {
-    const result = [1, 2, 3];
-
-    // Loose
-    expect(result).toBeDefined();
-    // Tight (too specific)
-    expect(result).toEqual([1, 2, 3]);
-    // Better
-    expect(result).toEqual(expect.arrayContaining([2, 1, 3]));
-
-    expect(result.length).toBeGreaterThan(0);
+  it('should return an array with valid coupon codes', () => {
+    const coupons = getCoupons();
+    coupons.forEach((coupon) => {
+      expect(coupon).toHaveProperty('code');
+      expect(typeof coupon.code).toBe('string');
+      expect(coupon.code).toBeTruthy();
+    });
   });
-});
 
-describe('test suite', () => {
-  it('test catese', () => {
-    const result = { name: 'John Doe' };
-
-    expect(result).toMatchObject({ name: 'John Doe' });
-    expect(result).toHaveProperty('name');
-    expect(typeof result.name).toBe('string');
+  it('should return an array with valid discounts', () => {
+    const coupons = getCoupons();
+    coupons.forEach((coupon) => {
+      expect(coupon).toHaveProperty('discount');
+      expect(typeof coupon.discount).toBe('number');
+      expect(coupon.discount).toBeGreaterThan(0);
+      expect(coupon.discount).toBeLessThan(1);
+    });
   });
 });
