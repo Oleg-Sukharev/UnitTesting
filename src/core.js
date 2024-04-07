@@ -28,11 +28,15 @@ export function calculateDiscount (price, discountCode) {
 export function validateUserInput (username, age) {
   const errors = [];
 
-  if (typeof username !== 'string' || username.length < 3) {
+  if (
+    typeof username !== 'string' ||
+    username.length < 3 ||
+    username.length > 100
+  ) {
     errors.push('Invalid username');
   }
 
-  if (typeof age !== 'number' || age < 18) {
+  if (typeof age !== 'number' || age < 18 || age > 150) {
     errors.push('Invalid age');
   }
 
