@@ -16,3 +16,15 @@ describe('isPriceInRange', () => {
     expect(isPriceInRange(5, 1, 10)).toBe(true);
   });
 });
+
+describe('isPriceInRangeParameterized', () => {
+  it.each([
+    { scenario: 'price < min', price: -1, result: false },
+    { scenario: 'price = min', price: 0, result: true },
+    { scenario: 'price between min and max', price: 5, result: true },
+    { scenario: 'price = max', price: 10, result: true },
+    { scenario: 'price > max', price: 11, result: false }
+  ])('should return $result when $scenario', ({ price, result }) => {
+    expect(isPriceInRange(price, 0, 10)).toBe(result);
+  });
+});
