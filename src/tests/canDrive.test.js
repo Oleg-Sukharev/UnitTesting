@@ -38,3 +38,24 @@ describe('canDrive', () => {
     expect(result).toBe(true);
   });
 });
+
+describe('canDriveParameterized', () => {
+  it('should return error if country code is not valid', () => {
+    const result = canDrive(15, 'FR');
+    expect(result).match(/invalid/i);
+  });
+
+  it.each([
+    { age: 15, country: 'US', result: false },
+    { age: 16, country: 'US', result: true },
+    { age: 17, country: 'US', result: true },
+    { age: 16, country: 'UK', result: false },
+    { age: 17, country: 'UK', result: true },
+    { age: 18, country: 'UK', result: true }
+  ])(
+    'should return $result for ($age,$country)',
+    ({ age, country, result }) => {
+      expect(canDrive(age, country)).toBe(result);
+    }
+  );
+});
