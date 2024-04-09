@@ -1,7 +1,7 @@
 import { it, expect, describe } from 'vitest';
 
 describe('test suite', () => {
-  it('test catese', () => {
+  it('test case', () => {
     const result = 'The requested file was not found.';
     // Loose (too general)
     expect(result).toBeDefined();
@@ -14,7 +14,7 @@ describe('test suite', () => {
 });
 
 describe('test suite', () => {
-  it('test catese', () => {
+  it('test case', () => {
     const result = [1, 2, 3];
 
     // Loose
@@ -29,7 +29,7 @@ describe('test suite', () => {
 });
 
 describe('test suite', () => {
-  it('test catese', () => {
+  it('test case', () => {
     const result = { name: 'John Doe' };
 
     expect(result).toMatchObject({ name: 'John Doe' });
