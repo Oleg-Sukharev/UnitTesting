@@ -1,4 +1,12 @@
-import { it, expect, describe } from 'vitest';
+import {
+  it,
+  expect,
+  describe,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll
+} from 'vitest';
 
 describe('test suite', () => {
   it('test case', () => {
@@ -36,4 +44,24 @@ describe('test suite', () => {
     expect(result).toHaveProperty('name');
     expect(typeof result.name).toBe('string');
   });
+});
+
+describe('test suite', () => {
+  beforeEach(() => {
+    console.log('beforeEach call');
+  });
+
+  beforeAll(() => {
+    console.log('beforeAll call');
+  });
+
+  afterEach(() => {
+    console.log('afterEach call');
+  });
+
+  afterAll(() => {
+    console.log('afterAll call');
+  });
+
+  it('test case', () => {});
 });
