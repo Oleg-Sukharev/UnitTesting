@@ -89,6 +89,7 @@ export class Stack {
   }
 
   push (item) {
+    if (typeof item === 'undefined') return;
     this.items.push(item);
   }
 
